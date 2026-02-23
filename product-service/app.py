@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 
 app = Flask(__name__)
 
@@ -7,6 +7,9 @@ products = [
     {"id": 2, "name": "Phone", "price": 500},
 ]
 
+@app.route("/")
+def home():
+    return render_template("index.html")
 @app.route("/products", methods=["GET"])
 def get_products():
     return jsonify(products)
